@@ -1,3 +1,10 @@
+@bot.event
+async def on_message(message):
+    if message.author == bot.user:
+        return  # ignore messages from the bot itself
+    print(f"Message received: {message.content}")  # DEBUG: see every message
+    await bot.process_commands(message)  # allow commands to work
+
 import discord
 from discord.ext import commands, tasks
 import random
