@@ -1,3 +1,9 @@
+@bot.event
+async def on_ready():
+    print(f"{bot.user} is online!")  # debug log
+    if not daily_word.is_running():   # start loop only if not already running
+        daily_word.start()
+
 import discord
 from discord.ext import commands, tasks
 import os
@@ -128,6 +134,5 @@ async def daily_word():
     word_es, eng_es = random.choice(spanish_words)
     await channel.send(f"**Daily Word Korean**: {word_ko} — {eng_ko}\n**Daily Word Spanish**: {word_es} — {eng_es}")
 
-daily_word.start()
 
 bot.run(TOKEN)
