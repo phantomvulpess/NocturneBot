@@ -1,9 +1,3 @@
-@bot.event
-async def on_ready():
-    print(f"{bot.user} is online!")  # debug log
-    if not daily_word.is_running():   # start loop only if not already running
-        daily_word.start()
-
 import discord
 from discord.ext import commands, tasks
 import os
@@ -21,6 +15,12 @@ intents.guilds = True
 intents.messages = True
 
 bot = commands.Bot(command_prefix="!", intents=intents)
+
+@bot.event
+async def on_ready():
+    print(f"{bot.user} is online!")  # debug log
+    if not daily_word.is_running():   # start loop only if not already running
+        daily_word.start()
 
 # --- 200+ Korean words with English translations ---
 korean_words = [
